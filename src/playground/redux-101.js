@@ -1,5 +1,5 @@
 import React from "react";
-import { createStore} from "redux";
+import { createStore } from "redux";
 
 // Action generators - functions that return action objects
 
