@@ -1,6 +1,11 @@
 import { createStore, combineReducers } from "redux";
 import React from "react";
 
+// ADD EXPENSE
+const addExpense = () => ({
+
+})
+
 const expensesReducerDefaultState = [];
 
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
