@@ -1,10 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
-import {format} from "date-fns";
 
 import "react-datepicker/dist/react-datepicker.css";
-
-// const now = format(new Date(), "MMM do, yyyy")
 
 export default class ExpenseForm extends React.Component {
     state = {
@@ -12,7 +9,7 @@ export default class ExpenseForm extends React.Component {
         note: '',
         amount: '',
         createdAt: new Date(),
-        calendarFocused: false
+        error: ''
     }
 
     onDescriptionChange = (e) => {
@@ -28,19 +25,33 @@ export default class ExpenseForm extends React.Component {
     onAmountChange = (e) => {
         const amount = e.target.value;
 
-        if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+        if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
             this.setState(() => ({amount}));
         }
     }
 
     onDateChange = (createdAt) => {
-       this.setState(() => ({createdAt}));
+        if (createdAt) {
+            this.setState(() => ({createdAt}));
+        }
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        if (!this.state.description || !this.state.amount) {
+            this.setState(() => ({ error: 'Please provide description and amount.'}))
+        } else {
+            // clear error state
+            this.setState(() => ({ error: ''}))
+        }
     }
 
     render() {
         return (
             <div>
-                <form>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
                         placeholder="Description"
