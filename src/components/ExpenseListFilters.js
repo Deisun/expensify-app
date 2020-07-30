@@ -4,10 +4,6 @@ import { connect } from "react-redux"
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from "../actions/filters";
 
 class ExpenseListFilters extends React.Component {
-    state = {
-
-    }
-
 
     render() {
         return (
