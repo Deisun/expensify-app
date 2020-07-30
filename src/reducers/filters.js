@@ -1,10 +1,11 @@
-// Filters Reducer
+import { startOfMonth, endOfMonth } from 'date-fns';
 
+// Filters Reducer
 const filtersReducerDefaultState = {
     text: '',
     sortBy: 'date',
-    startDate: undefined,
-    endDate: undefined
+    startDate: startOfMonth(new Date()),
+    endDate: endOfMonth(new Date())
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
