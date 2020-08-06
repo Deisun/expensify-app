@@ -24,6 +24,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
@@ -51,6 +52,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
