@@ -1,4 +1,5 @@
 import selectExpenses from '../../selectors/expenses'
+import { sub, add } from 'date-fns'
 
 const expenses = [{
     id: '1',
@@ -12,14 +13,14 @@ const expenses = [{
     note: '',
     amount: 109500,
     // createdAt: moment(0).subtract(4, 'days').valueOf()
-    createdAt: 0
+    createdAt: sub(0, {days: 4}).valueOf()
 }, {
     id: '3',
     description: 'Credit Card',
     note: '',
     amount: 4500,
     // createdAt: moment(0).add(4, 'days').valueOf()
-    createdAt: 0
+    createdAt: add(0, {days: 4}).valueOf()
 }];
 
 test('should filter by text value', () => {
@@ -32,4 +33,16 @@ test('should filter by text value', () => {
 
     const result = selectExpenses(expenses, filters);
     expect(result).toEqual([expenses[2], expenses[1]]);
-})
+});
+
+test('should filter by start date', () => {
+    const filters = {
+        text: '',
+        sortBy: 'date',
+        startDate: new Date(0),
+        endDate: undefined
+    }
+
+    const result = selectExpenses(expenses, filters);
+    expect(result).toEqual([expenses[2], expenses[0]]);
+});
