@@ -1,7 +1,6 @@
 {
   "name": "expensify-app",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.10.4",
@@ -37,7 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack --mode production -v",
+    "build": "webpack --mode production",
     "test": "jest --config=jest.config.json",
     "eject": "react-scripts eject"
   },
