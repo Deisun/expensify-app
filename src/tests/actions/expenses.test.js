@@ -19,7 +19,7 @@ test('should setup edit expense action object', () => {
     })
 });
 
-test('should setup add expense action object', () => {
+test('should setup add expense action object with provided values', () => {
     const expenseData = {
         description: 'Awesomeness',
         note: 'My note',
