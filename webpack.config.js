@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
     const isProduction = argv.mode === "production";
@@ -9,6 +10,7 @@ module.exports = (env, argv) => {
             path: path.join(__dirname, 'public'),
             filename: 'bundle.js'
         },
+        plugins: [new MiniCssExtractPlugin()],
         module: {
             rules: [
                 {
@@ -23,7 +25,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.s?css$/,
-                    use: ['style-loader', 'css-loader', 'sass-loader']
+                    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
                 }]
         },
         devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map'
