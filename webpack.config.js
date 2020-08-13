@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
     return {
         entry: './src/index.js',
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'public', 'dist'),
             filename: 'bundle.js'
         },
         plugins: [
@@ -29,7 +29,12 @@ module.exports = (env, argv) => {
                     use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
                 }]
         },
-        devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map'
+        devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+        devServer: {
+            contentBase: path.join(__dirname, 'public'),
+            historyApiFallback: true,
+            publicPath: '/dist/'
+        }
     }
 };
 
