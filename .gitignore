@@ -24,3 +24,8 @@ yarn-error.log*
 
 # webstorm
 .idea
+
+public/bundle.js
+public/bundle.js.map
+public/main.css
+public/main.css.map

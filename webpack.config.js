@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = (env, argv) => {
+module.exports = (argv) => {
     const isProduction = argv.mode === "production";
 
     return {
@@ -10,10 +10,11 @@ module.exports = (env, argv) => {
             path: path.join(__dirname, 'public'),
             filename: 'bundle.js'
         },
-        plugins: [new MiniCssExtractPlugin()],
+        plugins: [
+            new MiniCssExtractPlugin()
+        ],
         module: {
-            rules: [
-                {
+            rules: [{
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env', '@babel/preset-react', {
