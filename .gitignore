@@ -26,5 +26,5 @@ yarn-error.log*
 .idea
 
 # webpack files
-/dist
+public/dist
 
