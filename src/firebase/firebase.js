@@ -13,5 +13,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 firebase.database().ref().set({
-    name: "Rob Douma"
+    name: "Rob Douma",
+    age: 39
 })
