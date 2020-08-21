@@ -12,7 +12,38 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-firebase.database().ref().set({
+const database = firebase.database();
+
+database.ref().set({
     name: "Rob Douma",
-    age: 39
+    age: 39,
+    isSingle: false,
+    location: {
+        city: 'Atlanta',
+        country: 'USA'
+    }
+}).then(() => {
+    console.log('Data save successful.');
+}).catch((e) => {
+    console.log('Data save failed.', e);
 })
+
+database.ref('age').remove()
+    .then(() => {
+        console.log('Data remove successful.')
+    })
+    .catch((e) => {
+        console.log('Data remove failed.', e)
+    });
+
+database.ref().update({
+    name: 'Mike',
+    age: 29,
+    job: 'Software developer',
+    isSingle: null,
+    'location/city': 'Boston'
+}).then(() => {
+    console.log('Data update successful.')
+}).catch((e) => {
+    console.log('Data update failed.', e)
+});
