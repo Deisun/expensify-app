@@ -14,10 +14,44 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().on('value', (snapshot) => {
-    const val = snapshot.val();
-    console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+database.ref('expenses').on('value', (snapshot)=> {
+    const expenses = [];
+
+    snapshot.forEach((childSnapshot)=> {
+        expenses.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+        })
+    })
+    console.log(expenses)
+});
+
+// child_removed subscriber
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// child_changed subscriber
+database.ref('expenses').on('child_changed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// child_added subscriber
+database.ref('expenses').on('child_added', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+database.ref('expenses').push({
+    description: 'Rent',
+    note: 'my notes for rent',
+    amount: 23.22,
+    createdAt: 99911341
 })
+
+// database.ref().on('value', (snapshot) => {
+//     const val = snapshot.val();
+//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+// })
 
 // Setup data sub -> Andrew is a Software Developer at Amazon.
 
