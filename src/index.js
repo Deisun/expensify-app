@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'normalize.css';
-import './styles/styles.scss'
 import AppRouter from "./routers/AppRouter";
 import { Provider } from 'react-redux';
 import configureStore from "./store/configureStore";
 import './firebase/firebase'
+
+import 'normalize.css';
+import './styles/styles.scss'
+import "react-datepicker/dist/react-datepicker.css";
 
 const store = configureStore();
 
