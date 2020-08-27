@@ -5,5 +5,8 @@
   "setupFiles": [
     "raf/polyfill",
     "<rootDir>/src/tests/setupTests.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/tests/mockDate.js"
   ]
 }
