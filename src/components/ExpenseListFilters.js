@@ -3,10 +3,18 @@ import DatePicker from "react-datepicker";
 import { connect } from "react-redux"
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from "../actions/filters";
 
-class ExpenseListFilters extends React.Component {
+export class ExpenseListFilters extends React.Component {
     onTextChange = (e) => {
-        this.props.dispatch(setTextFilter(e.target.value));
+        this.props.setTextFilter(e.target.value);
     };
+
+    onSortChange = (e) => {
+        if (e.target.value === 'date') {
+            this.props.sortByDate();
+        } else if (e.target.value === 'amount') {
+            this.props.sortByAmount();
+        }
+    }
 
     render() {
         return (
@@ -18,27 +26,21 @@ class ExpenseListFilters extends React.Component {
                 />
                 <select
                     value={this.props.filters.sortBy}
-                    onChange={(e) => {
-                        if (e.target.value === 'date') {
-                            this.props.dispatch(sortByDate());
-                        } else if (e.target.value === 'amount') {
-                            this.props.dispatch(sortByAmount());
-                        }
-                    }}>
+                    onChange={this.onSortChange}>
                     <option value="date">Date</option>
                     <option value="amount">Amount</option>
                 </select>
 
                 <DatePicker
                     selected={this.props.filters.startDate}
-                    onChange={date => this.props.dispatch(setStartDate(date))}
+                    onChange={date => this.props.setStartDate(date)}
                     selectsStart
                     startDate={this.props.filters.startDate}
                     endDate={this.props.filters.endDate}
                 />
                 <DatePicker
                     selected={this.props.filters.endDate}
-                    onChange={date => this.props.dispatch(setEndDate(date))}
+                    onChange={date => this.props.setEndDate(date)}
                     selectsEnd
                     startDate={this.props.filters.startDate}
                     endDate={this.props.filters.endDate}
@@ -49,11 +51,15 @@ class ExpenseListFilters extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        filters: state.filters
-    }
+const mapStateToProps = (state) => ( {filters: state.filters} );
 
-}
 
-export default connect(mapStateToProps)(ExpenseListFilters);
+const mapDispatchToProps = (dispatch) => ( {
+    setTextFilter: (text) => dispatch(setTextFilter(text)),
+    sortByDate: () => dispatch(sortByDate()),
+    sortByAmount: () => dispatch(sortByAmount()),
+    setStartDate: (startDate) => dispatch(setStartDate(startDate)),
+    setEndDate: (endDate) => dispatch(setEndDate(endDate))
+} )
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
