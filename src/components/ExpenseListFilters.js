@@ -4,6 +4,9 @@ import { connect } from "react-redux"
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from "../actions/filters";
 
 class ExpenseListFilters extends React.Component {
+    onTextChange = (e) => {
+        this.props.dispatch(setTextFilter(e.target.value));
+    };
 
     render() {
         return (
@@ -11,9 +14,7 @@ class ExpenseListFilters extends React.Component {
                 <input
                     type="text"
                     value={this.props.filters.text}
-                    onChange={(e) => {
-                        this.props.dispatch(setTextFilter(e.target.value));
-                    }}
+                    onChange={this.onTextChange}
                 />
                 <select
                     value={this.props.filters.sortBy}
