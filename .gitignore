@@ -28,3 +28,6 @@ yarn-error.log*
 # webpack files
 public/dist
 
+.env.development
+.env.test
+
