@@ -25,11 +25,21 @@ beforeEach(() => {
 
 test('should render ExpenseListFilters with data correctly', () => {
     expect(wrapper).toMatchSnapshot();
-})
+});
 
 test('should render ExpenseListFilters with alt data correctly', () => {
     wrapper.setProps({
         filters: altFilters
-    })
+    });
     expect(wrapper).toMatchSnapshot();
-})
+});
+
+test('should handle text change', () => {
+    const value = 'rent';
+    wrapper.find('input').simulate('change', {
+        target: { value }
+    });
+
+    expect(setTextFilter).toHaveBeenLastCalledWith(value);
+});
+
