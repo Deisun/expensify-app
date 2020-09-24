@@ -4,7 +4,7 @@ import AppRouter from "./routers/AppRouter";
 import { Provider } from 'react-redux';
 import configureStore from "./store/configureStore";
 import { startSetExpenses } from './actions/expenses'
-import './firebase/firebase'
+import {firebase} from './firebase/firebase'
 
 import 'normalize.css';
 import './styles/styles.scss'
@@ -24,3 +24,10 @@ store.dispatch(startSetExpenses()).then(() => {
     ReactDOM.render(jsx, document.getElementById('root'));
 });
 
+firebase.auth().onAuthStateChanged((user) => {
+   if (user) {
+       console.log('log in')
+   }  else {
+       console.log('log out')
+   }
+})
