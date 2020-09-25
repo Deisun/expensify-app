@@ -18,26 +18,49 @@ const jsx = (
     </Provider>
 )
 
-let hasRendered = false
+// let hasRendered = false
+// const renderApp = () => {
+//     if (!hasRendered) {
+//         ReactDOM.render(jsx, document.getElementById('root'));
+//         hasRendered = true
+//     }
+// }
+//
+// ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+//
+// firebase.auth().onAuthStateChanged((user) => {
+//    if (user) {
+//        store.dispatch(startSetExpenses()).then(() => {
+//            renderApp()
+//            if (history.location.pathname === '/') {
+//                history.push('/dashboard')
+//            }
+//        });
+//    } else {
+//        renderApp()
+//        history.push('/')
+//    }
+// });
+let hasRendered = false;
 const renderApp = () => {
     if (!hasRendered) {
         ReactDOM.render(jsx, document.getElementById('root'));
-        hasRendered = true
+        hasRendered = true;
     }
-}
+};
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 
 firebase.auth().onAuthStateChanged((user) => {
-   if (user) {
-       store.dispatch(startSetExpenses()).then(() => {
-           renderApp()
-           if (history.location.pathname === '/') {
-               history.push('/dashboard')
-           }
-       });
-   }  else {
-       renderApp()
-       history.push('/')
-   }
+    if (user) {
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp();
+            if (history.location.pathname === '/') {
+                history.push('/dashboard');
+            }
+        });
+    } else {
+        renderApp();
+        history.push('/');
+    }
 });
