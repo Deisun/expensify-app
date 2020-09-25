@@ -21,7 +21,7 @@ const jsx = (
 let hasRendered = false
 const renderApp = () => {
     if (!hasRendered) {
-        renderApp()
+        ReactDOM.render(jsx, document.getElementById('root'));
         hasRendered = true
     }
 }
@@ -40,4 +40,4 @@ firebase.auth().onAuthStateChanged((user) => {
        renderApp()
        history.push('/')
    }
-})
+});
