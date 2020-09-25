@@ -9,7 +9,7 @@ import NotFoundPage from "../components/NotFoundPage";
 import LoginPage from "../components/LoginPage";
 import {createBrowserHistory} from "history"
 
-export const history = createBrowserHistory()
+export const history = createBrowserHistory();
 
 const AppRouter= () => (
     <Router history={history}>
