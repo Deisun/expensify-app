@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { createBrowserHistory } from "history";
 import CreateExpensePage from "../components/CreateExpensePage";
 import EditExpensePage from "../components/EditExpensePage";
 import ExpenseDashboardPage from "../components/ExpenseDashboardPage";
 import NotFoundPage from "../components/NotFoundPage";
-import LoginPage from "../components/LoginPage";
-import {createBrowserHistory} from "history"
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
+import LoginPage from "../components/LoginPage";
 
 export const history = createBrowserHistory();
 

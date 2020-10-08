@@ -20,22 +20,6 @@ export class CreateExpensePage extends React.Component {
     }
 }
 
-// const CreateExpensePage = (props) => (
-//     <div>
-//         <h3>Create Expense</h3>
-//         <ExpenseForm
-//             onSubmit={(expense) => {
-//                 //props.dispatch(startAddExpense(expense));
-//                 props.onSubmit(expense);
-//
-//                 // uses browser routing to go back to dashboard
-//                 props.history.push('/');
-//                 console.log("created: ", expense)
-//             }}
-//         />
-//     </div>
-// )
-
 const mapDispatchToProps = (dispatch) => ({
     addExpense: (expense) => dispatch(startAddExpense(expense))
 });
