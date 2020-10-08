@@ -39,7 +39,6 @@ firebase.auth().onAuthStateChanged((user) => {
        });
    } else {
        renderApp()
-       console.log("log out")
        history.push('/')
    }
 });
