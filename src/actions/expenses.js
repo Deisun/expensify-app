@@ -1,4 +1,3 @@
-import {v4 as uuid} from "uuid";
 import database from '../firebase/firebase'
 
 // ADD_EXPENSE
@@ -84,5 +83,5 @@ export const startSetExpenses = () => {
 
             dispatch(setExpenses(expenses));
         });
-    }
-}
+    };
+};
