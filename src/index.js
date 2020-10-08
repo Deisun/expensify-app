@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from "./store/configureStore";
 import { startSetExpenses } from './actions/expenses'
 import {firebase} from './firebase/firebase'
+import {login, logout} from "./actions/auth";
 
 import 'normalize.css';
 import './styles/styles.scss'
@@ -30,7 +31,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 
 firebase.auth().onAuthStateChanged((user) => {
    if (user) {
-       console.log("log in")
+       store.dispatch(login(user.uid));
        store.dispatch(startSetExpenses()).then(() => {
            if (history.location.pathname === '/') {
                history.push('/dashboard')
@@ -38,6 +39,7 @@ firebase.auth().onAuthStateChanged((user) => {
            renderApp()
        });
    } else {
+       store.dispatch(logout())
        console.log("log out")
        history.push('/')
        renderApp()
