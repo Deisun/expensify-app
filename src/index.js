@@ -31,11 +31,11 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 firebase.auth().onAuthStateChanged((user) => {
    if (user) {
        store.dispatch(login(user.uid));
+       renderApp();
        store.dispatch(startSetExpenses()).then(() => {
            if (history.location.pathname === '/') {
                history.push('/dashboard')
            }
-           renderApp();
        });
    } else {
        store.dispatch(logout())
