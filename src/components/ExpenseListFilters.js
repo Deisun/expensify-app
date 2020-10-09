@@ -23,6 +23,8 @@ export class ExpenseListFilters extends React.Component {
                     <div className="input-group__item">
                         <input
                             type="text"
+                            className="text-input"
+                            placeholder="Search Expenses"
                             value={this.props.filters.text}
                             onChange={this.onTextChange}
                         />
@@ -30,6 +32,7 @@ export class ExpenseListFilters extends React.Component {
                     <div className="input-group__item">
                         <select
                             value={this.props.filters.sortBy}
+                            className="select"
                             onChange={this.onSortChange}>
                             <option value="date">Date</option>
                             <option value="amount">Amount</option>
@@ -37,16 +40,24 @@ export class ExpenseListFilters extends React.Component {
                     </div>
                     <div className="input-group__item">
                         <DatePicker
+                            className="datePicker"
+                            selectsStart
+                            isClearable
+                            placeholderText="Start date"
                             selected={this.props.filters.startDate}
                             onChange={date => this.props.setStartDate(date)}
-                            selectsStart
                             startDate={this.props.filters.startDate}
                             endDate={this.props.filters.endDate}
                         />
+                    </div>
+                    <div className="input-group__item">
                         <DatePicker
+                            className="datePicker"
+                            selectsEnd
+                            isClearable
+                            placeholderText="End date"
                             selected={this.props.filters.endDate}
                             onChange={date => this.props.setEndDate(date)}
-                            selectsEnd
                             startDate={this.props.filters.startDate}
                             endDate={this.props.filters.endDate}
                             minDate={this.props.filters.startDate}
