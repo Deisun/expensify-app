@@ -18,34 +18,41 @@ export class ExpenseListFilters extends React.Component {
 
     render() {
         return (
-            <div>
-                <input
-                    type="text"
-                    value={this.props.filters.text}
-                    onChange={this.onTextChange}
-                />
-                <select
-                    value={this.props.filters.sortBy}
-                    onChange={this.onSortChange}>
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
-
-                <DatePicker
-                    selected={this.props.filters.startDate}
-                    onChange={date => this.props.setStartDate(date)}
-                    selectsStart
-                    startDate={this.props.filters.startDate}
-                    endDate={this.props.filters.endDate}
-                />
-                <DatePicker
-                    selected={this.props.filters.endDate}
-                    onChange={date => this.props.setEndDate(date)}
-                    selectsEnd
-                    startDate={this.props.filters.startDate}
-                    endDate={this.props.filters.endDate}
-                    minDate={this.props.filters.startDate}
-                />
+            <div className="content-container">
+                <div className="input-group">
+                    <div className="input-group__item">
+                        <input
+                            type="text"
+                            value={this.props.filters.text}
+                            onChange={this.onTextChange}
+                        />
+                    </div>
+                    <div className="input-group__item">
+                        <select
+                            value={this.props.filters.sortBy}
+                            onChange={this.onSortChange}>
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                    <div className="input-group__item">
+                        <DatePicker
+                            selected={this.props.filters.startDate}
+                            onChange={date => this.props.setStartDate(date)}
+                            selectsStart
+                            startDate={this.props.filters.startDate}
+                            endDate={this.props.filters.endDate}
+                        />
+                        <DatePicker
+                            selected={this.props.filters.endDate}
+                            onChange={date => this.props.setEndDate(date)}
+                            selectsEnd
+                            startDate={this.props.filters.startDate}
+                            endDate={this.props.filters.endDate}
+                            minDate={this.props.filters.startDate}
+                        />
+                    </div>
+                </div>
             </div>
         )
     }
